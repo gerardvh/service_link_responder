@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
+import json
 
-
-# Create your views here.
-def configuration(request):
-    return JsonResponse({
+config = {
   "name": "Service_Link_Responder",
   "description": "An add-on that does wonderful things",
   "key": "com.example.myaddon",
@@ -19,14 +17,19 @@ def configuration(request):
       ]
     },
     "webhook": [
-      "https://guarded-spire-1898.herokuapp.com/api/incident",
-      "((?:INC)+\d{7})|((?:inc)+\d{7})",
-      "room_message",
-      "incident-debug"
-      ]
+      {"url": "https://c8204885.ngrok.io/api/incident",
+      "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})",
+      "event": "room_message",
+      "name": "incident-debug"
+      }
+    ]
 
   }
-})
+}
+
+# Create your views here.
+def configuration(request):
+    return JsonResponse(config,safe=False)
 
 def index(request):
     return HttpResponse('Hello, World!')

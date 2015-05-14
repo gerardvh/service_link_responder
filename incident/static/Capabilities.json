@@ -13,10 +13,10 @@
       ]
     },
     "webhook": [
-      "https://guarded-spire-1898.herokuapp.com/api/incident",
-      "((?:INC)+\d{7})|((?:inc)+\d{7})",
-      "room_message",
-      "incident-debug"
+      {"url": "https://guarded-spire-1898.herokuapp.com/api/incident"},
+      {"pattern": "((?:INC)+\\d{7})|((?:inc)+\\d{7})"},
+      {"event": "room_message"},
+      {"name": "incident-debug"}
       ]
 
   }
