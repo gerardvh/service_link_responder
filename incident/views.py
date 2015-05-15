@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpRequest, JsonResponse
 import json
 from incident_parser import messageToIncidentNumbers, incidentNumbersToLinks
 from configuration import config
+from hipchatHandler import handleHipchatMessage
 
 # Create your views here.
 def configuration(request):
@@ -12,22 +13,10 @@ def index(request):
     return HttpResponse('Hello, World!')
 
 def incidentAPI(request):
-    hipChatMessage = {}
     if request.method == 'POST':
         jsonPOST = json.loads(request.body)
-        nums = messageToIncidentNumbers(jsonPOST['item']['message']['message'])
-        links = incidentNumbersToLinks(nums)
-        returnMessage = ""
-        # print jsonPOST['item']['message']['message']
-        for link in links:
-            returnMessage += " And another one: " + link
-        hipChatMessage = {
-            "color": "green",
-            "message": returnMessage,
-            "notify": True,
-            "message_format": "text"
-        }
-
-    
-    return JsonResponse(hipChatMessage)
+        # print json.dumps(jsonPOST)
+        print "about to send to handleHipchatMessage()"
+        hipChatReturnMessage = handleHipchatMessage(jsonPOST, request)
+        return JsonResponse(hipChatReturnMessage)
     
