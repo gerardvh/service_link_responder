@@ -18,5 +18,6 @@ def incidentAPI(request):
         # print json.dumps(jsonPOST)
         print "about to send to handleHipchatMessage()"
         hipChatReturnMessage = handleHipchatMessage(jsonPOST, request)
+        print "received hipChatReturnMessage"
         return JsonResponse(hipChatReturnMessage)
     

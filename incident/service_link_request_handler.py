@@ -15,6 +15,7 @@ displayName = True
 headers = {"Accept": "application/json"}
 
 def process(query):
+    print "made it to process()"
     parameters = {}
     parameters['sysparm_limit'] = limit
     # parameters['sysparm_fields'] = fieldsToReturn

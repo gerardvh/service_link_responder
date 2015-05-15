@@ -15,6 +15,7 @@ INC0573812, inc1230088nasl plus iNc2314421 or INC23145"""
 def messageToIncidentNumbers(message):
     # Accepts a string, returns incident numbers matching a regex
     incidentList = []
+    print "made it to messageToIncidentNumbers"
     for incident in pattern1.findall(message):
         incidentList.append(incident)
 
@@ -27,17 +28,18 @@ def messageToIncidentNumbers(message):
 def incidentNumbersToLinks(incidentList):
     # Accepts list of incident numbers and returns valid links
     jsonObj = getIncidentInfo(incidentList)
-    # print incidentList
+    print incidentList
     sys_idList = []
     linkList = []
     for obj in jsonObj:
         sys_idList.append(obj['sys_id'])
+        obj['incidentLink'] = incidentBaseUrl + obj['sys_id']
 
     for sys_id in sys_idList:
         incidentLink = incidentBaseUrl + sys_id
         linkList.append(incidentLink)
 
-    return linkList
+    return linkList, jsonObj
 
 
 # incidentNumbersToLinks(messageToIncidentNumbers(testMessage))

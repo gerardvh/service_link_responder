@@ -1,9 +1,15 @@
-<h1>Incident Links</h1>
+<em>{{ name }} mentioned a ServiceLink Incident:</em>
 
 <ul>
 
-{% for link in links %}
-    <li>{{ link }}</li>
+{% for incident in incidents %}
+    <li><strong>{{ incident.number }}</strong><a href={{ incident.incidentLink }}> (Click Here to Open)</a></li>
+    <ul>
+        <li><em>Short Description:</em></li>
+        <ul><li>{{ incident.short_description }}</li></ul>
+        <li><em>Detailed Description</em></li>
+        <ul><li>{{ incident.description|escape }}</li></ul>
+    </ul>
 {% endfor %}
 
 </ul>
