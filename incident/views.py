@@ -1,30 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
 import json
-
-config = {
-  "name": "Service_Link_Responder",
-  "description": "An add-on that does wonderful things",
-  "key": "com.example.myaddon",
-  "links": {
-    "homepage": "https://example.com/myaddon",
-    "self": "https://example.com/myaddon/capabilities"
-  },
-  "capabilities": {
-    "hipchatApiConsumer": {
-      "scopes": [
-        "send_notification"
-      ]
-    },
-    "webhook": [{
-      "url": "https://c8204885.ngrok.io/api/incident/",
-      "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})",
-      "event": "room_message",
-      "name": "incident-debug"
-      }]
-  }
-}
-
+from incident_parser import messageToIncidentNumbers, incidentNumbersToLinks
+from configuration import config
 
 # Create your views here.
 def configuration(request):
@@ -37,14 +15,19 @@ def incidentAPI(request):
     hipChatMessage = {}
     if request.method == 'POST':
         jsonPOST = json.loads(request.body)
-        jsonPOST['item']['message']['message']
+        nums = messageToIncidentNumbers(jsonPOST['item']['message']['message'])
+        links = incidentNumbersToLinks(nums)
+        returnMessage = ""
+        # print jsonPOST['item']['message']['message']
+        for link in links:
+            returnMessage += " And another one: " + link
         hipChatMessage = {
             "color": "green",
-            "message": jsonPOST['item']['message']['message'],
+            "message": returnMessage,
             "notify": True,
             "message_format": "text"
         }
-    # message = "You typed this incident #: %s" % incidentNumber 
+
     
     return JsonResponse(hipChatMessage)
     
