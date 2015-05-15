@@ -9,6 +9,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', incident.views.index, name='index'),
-    url(r'^api/incident', incident.views.incident, name='incident'),
+    url(r'^api/incident/', incident.views.incidentAPI, name='incidentAPI'),
     url(r'configuration$', incident.views.configuration, name='configuration')
 )
