@@ -16,16 +16,15 @@ config = {
         "send_notification"
       ]
     },
-    "webhook": [
-      {"url": "https://c8204885.ngrok.io/api/incident",
+    "webhook": [{
+      "url": "https://c8204885.ngrok.io/api/incident/",
       "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})",
       "event": "room_message",
       "name": "incident-debug"
-      }
-    ]
-
+      }]
   }
 }
+
 
 # Create your views here.
 def configuration(request):
@@ -34,11 +33,18 @@ def configuration(request):
 def index(request):
     return HttpResponse('Hello, World!')
 
-
-def incident(request):
-    if request.method == 'GET':
-        params = request.GET   
-    elif request.method == 'POST':
-        params = request.POST     
-
-    return JsonResponse(params)
+def incidentAPI(request):
+    hipChatMessage = {}
+    if request.method == 'POST':
+        jsonPOST = json.loads(request.body)
+        jsonPOST['item']['message']['message']
+        hipChatMessage = {
+            "color": "green",
+            "message": jsonPOST['item']['message']['message'],
+            "notify": True,
+            "message_format": "text"
+        }
+    # message = "You typed this incident #: %s" % incidentNumber 
+    
+    return JsonResponse(hipChatMessage)
+    
