@@ -1,8 +1,12 @@
 import json
 import re
 
+from service_link_request_handler import getIncidentInfo
+
 pattern1 = re.compile("((?:INC)+[0-9]{7})")
 pattern2 = re.compile("((?:inc)+[0-9]{7})")
+
+incidentBaseUrl = "https://umichprod.service-now.com/nav_to.do?uri=incident.do?sys_id="
 
 testMessage = """Testing typing53 numbers and Incidents 
 in this format INC0434690//\ or , +_+ 
@@ -22,5 +26,18 @@ def messageToIncidentNumbers(message):
 
 def incidentNumbersToLinks(incidentList):
     # Accepts list of incident numbers and returns valid links
-    for incident in incidentList:
-        print ""
+    jsonObj = getIncidentInfo(incidentList)
+    # print incidentList
+    sys_idList = []
+    linkList = []
+    for obj in jsonObj:
+        sys_idList.append(obj['sys_id'])
+
+    for sys_id in sys_idList:
+        incidentLink = incidentBaseUrl + sys_id
+        linkList.append(incidentLink)
+
+    return linkList
+
+
+# incidentNumbersToLinks(messageToIncidentNumbers(testMessage))
