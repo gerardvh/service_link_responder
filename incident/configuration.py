@@ -1,6 +1,6 @@
 
 config = {
-  "name": "Service_Link_Responder",
+  "name": "SListener",
   "description": "An add-on that does wonderful things",
   "key": "com.example.myaddon",
   "links": {

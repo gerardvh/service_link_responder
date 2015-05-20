@@ -3,12 +3,9 @@
 <ul>
 
 {% for incident in incidents %}
-    <li><strong>{{ incident.number }}</strong><a href={{ incident.incidentLink }}> (Click Here to Open)</a></li>
+    <li><a href={{ incident.incidentLink }}><strong>{{ incident.number }}</strong></a></li>
     <ul>
-        <li><em>Short Description:</em></li>
-        <ul><li>{{ incident.short_description }}</li></ul>
-        <li><em>Detailed Description</em></li>
-        <ul><li>{{ incident.description|escape|linebreaks }}</li></ul>
+        <li><em>Short Description: </em>{{ incident.short_description }}</li>
     </ul>
 {% endfor %}
 
