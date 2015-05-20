@@ -6,7 +6,7 @@ incUrl = 'https://umichprod.service-now.com/api/now/table/incident'
 user = '***REMOVED***'
 pwd = '***REMOVED***'
 
-# url can have multiple requirements put on it, separated by '&,' example:
+
 parameters = {}
 limit = 10
 fieldsToReturn = 'location,serial_number,name'

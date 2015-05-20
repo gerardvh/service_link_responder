@@ -14,7 +14,7 @@ config = {
       ]
     },
     "webhook": [{
-      "url": "https://c8204885.ngrok.io/api/incident/",
+      "url": "https://9e14e444.ngrok.io/api/incident/",
       "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})",
       "event": "room_message",
       "name": "incident-debug"
