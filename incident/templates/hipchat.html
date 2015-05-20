@@ -8,7 +8,7 @@
         <li><em>Short Description:</em></li>
         <ul><li>{{ incident.short_description }}</li></ul>
         <li><em>Detailed Description</em></li>
-        <ul><li>{{ incident.description|escape }}</li></ul>
+        <ul><li>{{ incident.description|escape|linebreaks }}</li></ul>
     </ul>
 {% endfor %}
 
