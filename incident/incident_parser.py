@@ -3,8 +3,8 @@ import re
 
 from service_link_request_handler import getIncidentInfo
 
-pattern1 = re.compile("((?:INC)+[0-9]{7})")
-pattern2 = re.compile("((?:inc)+[0-9]{7})")
+pattern1 = re.compile("((?:INC)+[0-9]{7})", re.IGNORECASE)
+# pattern2 = re.compile("((?:inc)+[0-9]{7})")
 
 incidentBaseUrl = "https://umichprod.service-now.com/nav_to.do?uri=incident.do?sys_id="
 
@@ -19,8 +19,8 @@ def messageToIncidentNumbers(message):
     for incident in pattern1.findall(message):
         incidentList.append(incident)
 
-    for incident in pattern2.findall(message):
-        incidentList.append(incident)
+    # for incident in pattern2.findall(message):
+    #     incidentList.append(incident)
 
     return incidentList
 
