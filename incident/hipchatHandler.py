@@ -1,7 +1,7 @@
 from incident_parser import messageToIncidentNumbers, incidentNumbersToLinks
 from django.shortcuts import render
 import json
-import markdown
+
 
 hipChatReturnMessage = {
     "color": "green",
