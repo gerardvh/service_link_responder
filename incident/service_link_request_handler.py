@@ -14,7 +14,7 @@ displayName = True
 
 headers = {"Accept": "application/json"}
 
-def process(query):
+def process(query, url):
     print "made it to process()"
     parameters = {}
     parameters['sysparm_limit'] = limit
@@ -22,7 +22,7 @@ def process(query):
     parameters['sysparm_display_value'] = displayName
     parameters['sysparm_query'] = query   
     
-    response = requests.get(incUrl, auth=(user, pwd), headers=headers, params=parameters)
+    response = requests.get(url, auth=(user, pwd), headers=headers, params=parameters)
     # print json.dumps(response.json(), indent=2)
     if response.status_code == 200:
         return response.json()
@@ -31,7 +31,7 @@ def process(query):
 def getIncidentInfo(incidents):
     query = getQueryString(incidents)
     print query
-    jsonObj = process(query)
+    jsonObj = process(query, incUrl)
     return jsonObj['result']
 
 
