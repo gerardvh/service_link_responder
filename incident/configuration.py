@@ -14,7 +14,7 @@ config = {
       ]
     },
     "webhook": [{
-      "url": "https://261f50e2.ngrok.io/api/incident/",
+      "url": "https://sl-listener.herokuapp.com/api/incident/",
       "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})",
       "event": "room_message",
       "name": "incident-debug"
