@@ -1,10 +1,11 @@
 import requests
 import json
+import os
 
 ciUrl = 'https://umichprod.service-now.com/api/now/table/cmdb_ci'
 incUrl = 'https://umichprod.service-now.com/api/now/table/incident'
-user = '***REMOVED***'
-pwd = '***REMOVED***'
+user = os.environ.get('SL_USER')
+pwd = os.environ.get('SL_PASSWORD')
 
 
 parameters = {}
