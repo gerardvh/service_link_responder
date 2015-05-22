@@ -3,7 +3,7 @@
 <ul>
 
 {% for incident in incidents %}
-    <li><a href={{ incident.incidentLink }}><strong>{{ incident.number }}</strong></a></li>
+    <li><a href={{ incident.incident_link }}><strong>{{ incident.number }}</strong></a></li>
     <ul>
         <li><em>Short Description: </em>{{ incident.short_description }}</li>
     </ul>
