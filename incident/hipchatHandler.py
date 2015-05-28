@@ -16,27 +16,27 @@ hipChatReturnMessage = {
 # of basic info about the webapp and a url to send POSTs to when the listener
 # is triggered by a match to the supplied pattern.
 config = {
-  "name": "SListener",
-  "description": "An add-on that listens for ServiceLink incidents \
-  and returns a structured and useful response to HipChat.",
-  "key": "com.example.myaddon",
-  "links": {
-    "homepage": "https://example.com/myaddon",
-    "self": "https://example.com/myaddon/capabilities"
-  },
-  "capabilities": {
+    "name": "SListener",
+    "description": "An add-on that listens for ServiceLink incidents \
+    and returns a structured and useful response to HipChat.",
+    "key": "com.example.myaddon",
+    "links": {
+        "homepage": "https://example.com/myaddon",
+        "self": "https://example.com/myaddon/capabilities"
+    },
+    "capabilities": {
     "hipchatApiConsumer": {
-      "scopes": [
-        "send_notification"
-      ]
+        "scopes": [
+            "send_notification"
+        ]
     },
     "webhook": [{
-      "url": "https://sl-listener.herokuapp.com/api/incident/",
-      "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})", # TODO: Change this to case-insensitive regex
-      "event": "room_message",
-      "name": "incident-debug"
-      }]
-  }
+        "url": "https://sl-listener.herokuapp.com/api/incident/",
+        "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})", # TODO: Change this to case-insensitive regex
+        "event": "room_message",
+        "name": "incident-debug"
+        }]
+    }
 }
 
 def handleHipchatMessage(message, request):
