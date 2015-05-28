@@ -56,5 +56,5 @@ def messageToIncidentNumbers(message):
 def getIncidentJSONWithLinks(incidentList):
     jsonObj = getIncidentInfo(incidentList)
     for obj in jsonObj:
-        obj['incident_link'] = incidentBaseUrl + obj['sys_id']
+        obj['incident_link'] = incidentLinkBaseUrl + obj['sys_id']
     return jsonObj
