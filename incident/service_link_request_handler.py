@@ -8,7 +8,7 @@ incUrl = 'https://umichprod.service-now.com/api/now/table/incident'
 user = os.environ.get('SL_USER') # User saved in .env
 pwd = os.environ.get('SL_PASSWORD') # Pass saved in .env
 
-incidentPattern = re.compile("((?:INC)+[0-9]{7})", re.IGNORECASE) 
+incidentPattern = re.compile("[INCinc]+[0-9]{7}") 
 incidentLinkBaseUrl = "https://umichprod.service-now.com/nav_to.do?uri=incident.do?sys_id="
 
 limit = 10 # Used in process() to limit the number of items returned from ServiceLink

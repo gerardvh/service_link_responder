@@ -32,7 +32,7 @@ config = {
     },
     "webhook": [{
         "url": "https://sl-listener.herokuapp.com/api/incident/",
-        "pattern": "((?:INC)+[0-9]{7})|((?:inc)+[0-9]{7})", # TODO: Change this to case-insensitive regex
+        "pattern": "[INCinc]+[0-9]{7}", # TODO: Change this to case-insensitive regex
         "event": "room_message",
         "name": "incident-debug"
         }]
