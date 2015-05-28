@@ -4,8 +4,8 @@ This is a Python/Django web app that listens for incident numbers mentioned in H
 
 ### ToDo's
 
-- Get webapp to a beta-version deployed on Heroku to be installed on individual HipChat rooms.
 - Add configuration options to select what is returned to the room.
-    + Alternatively, fine-tune defaults to be very useful and not annoying.
-- Comment code effectively...
+- Add listener functionality for KBase documents as well and add links / titles to the room.
+- Add tests to keep from regressing during feature upgrades.
+- Remember requests and keep them in the database. (For debugging and interest.)
 
