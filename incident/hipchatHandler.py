@@ -19,10 +19,10 @@ config = {
     "name": "SListener",
     "description": "An add-on that listens for ServiceLink incidents \
     and returns a structured and useful response to HipChat.",
-    "key": "com.example.myaddon",
+    "key": "com.gerardvh.sl-listener",
     "links": {
-        "homepage": "https://example.com/myaddon",
-        "self": "https://example.com/myaddon/capabilities"
+        "homepage": "https://gerardvh.com",
+        "self": "https://sl-listener.herokuapp.com/configuration"
     },
     "capabilities": {
     "hipchatApiConsumer": {
