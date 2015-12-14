@@ -1,9 +1,7 @@
 <em><strong>{{ name }}</strong> mentioned ServiceLink Incident(s):</em>
 
 <ul>
-
 {% for incident in incidents %}
     <li><a href={{ incident.incident_link }}><strong>{{ incident.number }}</strong></a>: {{ incident.short_description }}</li>
 {% endfor %}
-
 </ul>

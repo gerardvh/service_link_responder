@@ -3,6 +3,7 @@ import json
 import os
 import re
 
+
 ciUrl = 'https://umichprod.service-now.com/api/now/table/cmdb_ci'
 incUrl = 'https://umichprod.service-now.com/api/now/table/incident'
 user = os.environ.get('SL_USER') # User saved in .env

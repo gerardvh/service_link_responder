@@ -2,7 +2,6 @@ from service_link_request_handler import messageToIncidentNumbers, getIncidentJS
 from django.shortcuts import render
 import json
 
-
 # Beginnings of a json response to a HipChat webhook.
 # We will fill in the "message" variable below in handleHipchatMessage()
 hipChatReturnMessage = {
@@ -32,7 +31,7 @@ config = {
     },
     "webhook": [{
         "url": "https://sl-listener.herokuapp.com/api/incident/",
-        "pattern": "[INCinc]+[0-9]{7}", # TODO: Change this to case-insensitive regex
+        "pattern": "[INCinc]+[0-9]{7}",
         "event": "room_message",
         "name": "incident-debug"
         }]
